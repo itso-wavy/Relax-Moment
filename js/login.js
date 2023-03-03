@@ -12,7 +12,7 @@ const logoutBtn = document.querySelector('#logoutBtn');
 
 function getUserInfo() {
   username = localStorage.getItem('username');
-  profileName.innerText = username.toUpperCase();
+  profileName.innerText = username.toLowerCase();
   loginInput.classList.toggle('ir');
   profileBox.classList.toggle('ir');
   const USERNAME_VALUE = localStorage.getItem('PROFILE_IMG_KEY');
@@ -20,7 +20,7 @@ function getUserInfo() {
     profileImg.src = USERNAME_VALUE;
     profileImg.classList.remove('ir');
   } else {
-    initial.innerText = username[0].toUpperCase();
+    initial.innerText = username[0].toLowerCase();
   }
 }
 
