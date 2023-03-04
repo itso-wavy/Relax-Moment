@@ -5,49 +5,186 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="Morningtap">
+  <meta property="og:title" content="Relax Moment">
   <meta property="og:type" content="website">
   <meta property="og:url" content="">
   <meta property="og:image" content="">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
-  <title>Morningtap</title>
+  <title>Relax Moment</title>
 </head>
 
-<body>
-  <header>
+<body class="container">
+  <header class="grid-item profile">
     <section class="topbar-sec">
-      topbar
+      <h2 class="ir">dictionary search, sns links</h2>
+      <form id="searchingForm">
+        <input type="text" placeholder="Searching dictionary" id="searchingInput">
+        <a href="https://dict.naver.com/" id="searchingBtn">
+          <img src="assets/arrow-icon.svg" alt="go to naver dictionary" class="bar-icon">
+        </a>
+      </form>
+      <a href="https://twitter.com/home?lang=ko" class="sns-btn">
+        <img src="assets/twitter-icon.svg" alt="go to twitter" class="bar-icon">
+      </a>
+      <a href="https://github.com/itso-wavy?tab=overview&from=2022-08-01&to=2022-08-31" class="sns-btn">
+        <img src="assets/github-icon.svg" alt="go to wavy's github" class="bar-icon">
+      </a>
+      <a href="https://itsowavy.tistory.com/category/%EB%82%98%EC%9D%98%20%EB%AA%A8%EB%93%A0%20%EC%8B%9C%EA%B0%84"
+        class="sns-btn">
+        <img src="assets/tistory-icon.svg" alt="go to wavy's blog" class="bar-icon">
+      </a>
     </section> <!-- // 1. topbar-sec-->
 
     <section class="login-sec">
-      login
+      <form id="loginForm">
+        <input type="text" placeholder="Tell me who you are..." id="loginInput">
+      </form>
+      <div id="profileBox" class="ir">
+        <h2 id="profileName">PROFILE</h2>
+        <div class="profile-menu">
+          <label for="imgInput" class="img-label">
+            <img src="/" alt="" id="profileImg" class="ir">
+            <span id="initial"></span>
+          </label>
+          <input type="file" id="imgInput" class="ir">
+          <button id="logoutBtn">
+            <img src="assets/logout-icon.svg" alt="logout button">
+          </button>
+        </div>
+      </div>
     </section> <!-- // 2. login-sec-->
   </header>
 
-  <main>
-    <section class=" bg-quotes-sec">
-      bg-quotes
-    </section> <!-- // 3. bgQuotes-sec-->
+  <section class="grid-item gallery">
+    <h2 class="ir">photos, quotes</h2>
+    <p class="maker">WAVY made with ♥</p>
+      <q id="quotes"></q>
+      <button id="flipBtn">
+        <img src="assets/flip-icon.svg" alt="gallery flip button">
+      </button>
+  </section> <!-- // 3. gallery-sec-->
 
-    <section class=" cal-todo-sec">
-      cal-todo
-    </section> <!-- // 4. cal-todo-sec-->
+  <section class="grid-item schedule">
+    <h2 class="ir">calendar, paint</h2>
+    <section id="calendar">
+      <h3><time>March</time></h3> 
+      <!-- FIXME: -->
+    </section>
+    
+    <section id="paint">
+      <h2>paint</h2>
+    </section>
 
-    <section class=" clock-sec">
-      clock
-    </section> <!-- // 5. clock-sec-->
+    <button class="left-btn">
+      <img src="assets/arrow-left-icon.svg" alt="to left">
+    </button>
+    <button class="right-btn">
+      <img src="assets/arrow-right-icon.svg" alt="to right">
+    </button>
+  </section> <!-- // 4. schedule-sec-->
 
-    <section class=" weather-sec">
-      weather
-    </section> <!-- // 6. weather-sec-->
+  <section class="grid-item weather">
+    <p><span id="weatherCity" class="weather-item"></span></p>
+    <img id="weatherIcon" src="/" alt="weather icon">
+    <h2><span id="weatherTxt" class="weather-item"></span></h2>
+    <p>Temp <span id="weatherTemp" class="weather-item"></span></p>
+    <p>Feels Like... <span id="weatherFeeltemp" class="weather-item"></span></p>
+    <p>sunrise <span id="weatherSunrise" class="weather-item"></span></p>
+    <p>sunset <span id="weatherSunset" class="weather-item"></span></p>
+  </section> <!-- // 5. weather-sec-->
 
-    <section class=" calculator-sec">
-      calculator
-    </section> <!-- // 7. calculator-sec-->
+  <section class="grid-item clock">
+    <h2 class="ir">analog clock, timer</h2>
+    <article id="clock">
+      <h3 class="small-heading">analog clock</h3>
+      <div class="time twelve">
+        <div class="time-number twelve">12</div>
+      </div>
+      <div class="time one">
+        <div class="time-number one">1</div>
+      </div>
+      <div class="time two">
+        <div class="time-number two">2</div>
+      </div>
+      <div class="time three">
+        <div class="time-number three">3</div>
+      </div>
+      <div class="time four">
+        <div class="time-number four">4</div>
+      </div>
+      <div class="time five">
+        <div class="time-number five">5</div>
+      </div>
+      <div class="time six">
+        <div class="time-number six">6</div>
+      </div>
+      <div class="time seven">
+        <div class="time-number seven">7</div>
+      </div>
+      <div class="time eight">
+        <div class="time-number eight">8</div>
+      </div>
+      <div class="time nine">
+        <div class="time-number nine">9</div>
+      </div>
+      <div class="time ten">
+        <div class="time-number ten">10</div>
+      </div>
+      <div class="time eleven">
+        <div class="time-number eleven">11</div>
+      </div>
+      <div id="secHand" class="clock-hand"></div>
+      <div id="minHand" class="clock-hand"></div>
+      <div id="hourHand" class="clock-hand"></div>
+    </article>
 
-  </main>
-  <script src="js/app.js"></script>
+    <article id="timer" class="ir">
+      <h3 class="heading-small">Tea Break</h3>
+      <div id="timerSelect">
+        <button class="select-btn">...</button>
+        <ul id="timerList" class="select-list">
+          <li><button type="button">5 min</button></li>
+          <li><button type="button">15 min</button></li>
+          <li><button type="button">30 min</button></li>
+        </ul>
+      </div>
+      <p id="timerPanel" class="ir"><span class="panel-item min">00</span><span class="panel-item">:</span><span
+          class="panel-item sec">00</span></p>
+    </article>
+
+    <button class="left-btn">
+      <img src="assets/arrow-left-rounded-icon.svg" alt="to left">
+    </button>
+    <button class="right-btn">
+      <img src="assets/arrow-right-rounded-icon.svg" alt="to right">
+    </button>
+  </section> <!-- // 6. clock-sec-->
+
+  <section class="grid-item todolist">
+      <h2 class="todo-txt">Things to do <button id="addBtn"></button></h2>
+      <form id="todoForm">
+        <ol id="goallist">
+          <!-- <li>API by day, IPA by night</li> -->
+        </ol>
+        <!-- <fieldset id="todolist">
+          <label for="todo1st">1.</label>
+          <input type="text" id="todo1st" class="todo-item"></input>
+          <label for="todo2nd">2.</label>
+          <input type="text" id="todo2nd" class="todo-item"></input>
+          <label for="todo3rd">3.</label>
+          <input type="text" id="todo3rd" class="todo-item"></input>
+        </fieldset> -->
+      </form>
+  </section> <!-- // 7. todolist-sec-->
+
+  <script src="js/login.js"></script>
+  <script src="js/topbar.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/clock.js"></script>
+  <script src="js/todolist.js"></script>
 </body>
 
 </html>

@@ -146,6 +146,7 @@ table {
 
 input {
   border: none;
+  vertical-align: top;
 }
 
 input:focus {
@@ -155,13 +156,21 @@ input:focus {
 button {
   border: none;
   cursor: pointer;
+  background-color: inherit;
+  color: inherit;
 }
 
-.txt-hide {
-  position: absolute;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.ir {
+  position: absolute !important; 
   clip: rect(0 0 0 0);
-  width: 1px;
-  height: 1px;
+  width: 1px; 
+  height: 1px; 
   margin: -1px;
   overflow: hidden;
 }
+
