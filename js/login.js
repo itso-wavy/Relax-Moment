@@ -29,7 +29,6 @@ function handleLogout() {
     confirm('When you log out all existing information will be deleted.')
   ) {
     localStorage.clear();
-    // TODO: 프사, 지역정보, 투두 등 정보 전부 삭제
     window.location.reload();
   } else {
     return;
@@ -69,7 +68,3 @@ imgInput.addEventListener('change', function () {
 );
 
 logoutBtn.addEventListener('click', handleLogout);
-
-
-
-
