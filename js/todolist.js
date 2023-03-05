@@ -27,6 +27,7 @@ function paintTodo(todo) {
 
   todoItem.id = todo.id;
   todoItem.innerHTML = `<input type="checkbox" id="todoItem${todo.id}" class="ir todo-item"><label for="todoItem${todo.id}" class="item-label">${todo.txt}</label>`;
+  delBtn.type='button';
   delBtn.addEventListener('click', deleteToDo);
   todoItem.appendChild(delBtn);
   todoList.appendChild(todoItem);
@@ -43,8 +44,16 @@ function handleTodoSubmit(e) {
   todos.push(newTodo);
   todoInput.value = '';
   todoInput.classList.toggle('ir');
-  paintTodo(newTodo);
   saveTodos();
+  paintTodo(newTodo);
+}
+
+const savedTodos = localStorage.getItem(TODOS_KEY);
+
+if (savedTodos) {
+  const parsedTodos = JSON.parse(savedTodos);
+  todos = parsedTodos;
+  todos.forEach(paintTodo)
 }
 
 addBtn.addEventListener('mouseover', () => {
@@ -57,11 +66,3 @@ addBtn.addEventListener('click', () => {
   todoInput.classList.toggle('ir');
 })
 todoForm.addEventListener('submit', handleTodoSubmit);
-const savedTodos = localStorage.getItem(TODOS_KEY);
-
-if (savedTodos) {
-  const parsedTodos = JSON.parse(savedTodos);
-  todos = parsedTodos;
-  todos.forEach(paintTodo)
-}
-
