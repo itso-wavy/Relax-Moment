@@ -23,7 +23,7 @@ const quotesList = [
 
 function makingRandomNum () {
   const randomNum = Math.floor(Math.random() * 10);
-  wallpaper.style.background = `url(../assets/background/${wallpaperList[randomNum]}) center/cover no-repeat`;
+  wallpaper.style.background = `url(./assets/background/${wallpaperList[randomNum]}) center/cover no-repeat`;
   quotes.innerText = quotesList[randomNum];
 }
 

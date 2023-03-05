@@ -6,10 +6,13 @@
 }
 
 :root {
-  --grey: #C1C1B1;
-  --main: #374FC7;
-  --sub: #b7c8d2;
-  --point: #f0ec35;
+  --dark: #16171C;
+  --shadow: rgba(0, 0, 128, 0.1);
+  --main: #ADD6C2;
+  --sub: #C9CBD5;
+  --point: #74BDE8;
+  --point2: #F7DED7;
+  --point3: #E9D561;
 }
 
 * {
@@ -20,7 +23,7 @@
   height: 100vh;
   padding: 0.625rem;
   box-sizing: border-box;
-  background-color: black;
+  background-color: var(--dark);
   color: white;
   display: grid;
   grid-template: 1fr 1fr 3fr 2fr 1fr 1fr/1fr;
@@ -64,7 +67,7 @@
   border-radius: 1.6rem;
   width: 86%;
   padding: 0.8em 1em;
-  color: #D1DEE7;
+  color: var(--point);
   letter-spacing: 0.15rem;
   font-style: italic;
   font-weight: 700;
@@ -82,10 +85,18 @@
   box-sizing: content-box;
 }
 
+.sns-btn:hover {
+opacity: 0.85;
+}
+
 .bar-icon {
   display: block;
   height: 2rem;
   width: 2rem;
+}
+
+.bar-icon:hover {
+  opacity: 0.85;
 }
 
 #searchingBtn {
@@ -146,10 +157,17 @@
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  background-color: #7A81F2;
+  background-color: var(--point2);
+  box-shadow: inset 3px 3px 10px 5px var(--shadow);
   position: relative;
   cursor: pointer;
   text-align: center;
+  transition: all ease-in 0.1s;
+}
+
+.img-label:hover {
+  background-color: var(--point);
+  box-shadow: inset 0px 0px 10px 1px var(--main);
 }
 
 #initial {
@@ -179,6 +197,11 @@
   margin: 0 auto;
 }
 
+#logoutBtn:hover,
+#flipBtn:hover {
+  opacity: 0.85;
+}
+
 #logoutBtn img,
 #flipBtn img {
   background: transparent;
@@ -191,6 +214,7 @@
   grid-area: gallery;
   position: relative;
   min-height: 10rem;
+  color: white;
 }
 
 .maker {
@@ -202,7 +226,7 @@
 
 #quotes {
   font-size: 1.1rem;
-  background-color: rgba(0, 0, 128, 0.1);
+  background-color: var(--shadow);
   backdrop-filter: blur(3px);
   position: absolute;
   bottom: 0;
@@ -223,7 +247,7 @@
 /* // 4. paint-sec */
 .painter {
   grid-area: painter;
-  background-color: #fff;
+  background-color: white;
 }
 
 .paint {
@@ -243,7 +267,7 @@
 
 canvas {
   border-radius: 1.875rem;
-  border: 1px dashed black;
+  border: 1px dashed var(--dark);
   cursor: none;
 }
 
@@ -261,13 +285,13 @@ canvas {
 
 .btn-options button {
   padding: 0.625rem 1.875rem;
-  color: rgba(148, 192, 245);
-  background-color: black;
+  color: var(--point2);
+  background-color: var(--dark);
   transition: opacity linear .1s;
 }
 
 .btn-options button:hover {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .color-options {
@@ -278,7 +302,7 @@ canvas {
   width: 50px;
   cursor: pointer;
   border: 2px solid white;
-  transition: transform ease-in-out .1s;
+  transition: transform all -out .1s;
 }
 
 .color-option:hover {
@@ -286,7 +310,7 @@ canvas {
 }
 
 #brush {
-  border: 1px solid var(--main);
+  border: 1px solid var(--point3);
   height: 30px;
   width: 30px;
   border-radius: 10px;
@@ -300,7 +324,7 @@ canvas {
 .weather {
   grid-area: weather;
   background-color: var(--sub);
-  color: black;
+  color: var(--dark);
   font-size: 1rem;
   margin-right: 2px;
   display: flex;
@@ -309,12 +333,14 @@ canvas {
   align-items: center;
   position: relative;
   padding: 2rem;
+  box-shadow: inset -4px -4px 14px rgba(30, 53, 75, 0.3), inset 2px 2px 14px rgba(30, 53, 75, 0.3), inset 8px 8px 14px rgba(218, 242, 234, 0.5);
 }
 
 .info-box {
   width: 100%;
   text-align: left;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
+  line-height: 1rem;
 }
 
 .weather-item {
@@ -326,10 +352,11 @@ canvas {
 }
 
 #weatherIcon {
-  width: 9rem;
-  height: 9rem;
+  width: 9em;
+  height: 9em;
   position: relative;
   bottom: 0.1875rem;
+  z-index: 10;
 }
 
 .location {
@@ -350,18 +377,19 @@ bottom: 0.375rem;
 /* 6-1. clock */
 .clock {
   grid-area: clock;
-  background-color: var(--point);
+  background-color: var(--main);
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   position: relative;
+  box-shadow: inset -2px -5px 14px rgba(234, 243, 193, 0.3), inset -1px -6px 20px 8px rgba(238, 247, 200, 0.5),inset -2px -1px 10px 5px rgba(23, 100, 114, 0.534)
 }
 
 .mini-heading {
   display: inline-block;
-  background-color: #16171C;
+  background-color: var(--dark);
   color: white;
   font-weight: bolder;
   border-radius: 30px;
@@ -370,15 +398,16 @@ bottom: 0.375rem;
   position: absolute;
   top: 1.5rem;
   left: 2rem;
+  word-wrap: keep-all;
 }
 
 .analog-clock {
   border-radius: 50%;
-  background-color: #fff;
+  background-color: white;
   width: 10rem;
   height: 10rem;
   position: relative;
-  margin-top: 2rem;
+  margin-top: 2.8rem;
 }
 
 .analog-clock::after {
@@ -389,7 +418,7 @@ bottom: 0.375rem;
   top: calc(50% - 6px / 2);
   left: calc(50% - 6px / 2);
   border-radius: 50%;
-  background-color: #000;
+  background-color: var(--dark);
 }
 
 .time {
@@ -410,7 +439,7 @@ bottom: 0.375rem;
   text-align: center;
   font-weight: bolder;
   line-height: 20px;
-  color: black;
+  color: var(--dark);
 }
 
 .time.one {
@@ -507,7 +536,7 @@ bottom: 0.375rem;
 }
 
 #secHand {
-  background-color: red;
+  background-color: var(--point2);
   width: 2px;
   height: 45%;
   top: calc(50% - 45%);
@@ -515,7 +544,7 @@ bottom: 0.375rem;
 }
 
 #minHand {
-  background-color: #000;
+  background-color: var(--dark);
   width: 2px;
   height: 35%;
   top: calc(50% - 35%);
@@ -523,7 +552,7 @@ bottom: 0.375rem;
 }
 
 #hourHand {
-  background-color: #000;
+  background-color: var(--dark);
   width: 6px;
   height: 20%;
   top: calc(50% - 20%);
@@ -538,11 +567,11 @@ bottom: 0.375rem;
 }
 
 .clock-btn.left {
-  left: 0;
+  left: 0.8rem;
 }
 
 .clock-btn.right {
-  right: 0;
+  right: 0.8rem;
 }
 
 .clock-btn img {
@@ -555,7 +584,7 @@ bottom: 0.375rem;
   width: 10rem;
   height: 10rem;
   position: relative;
-  margin-top: 2rem;
+  margin-top: 2.8rem;
   border-radius: 10px;
 }
 
@@ -566,7 +595,7 @@ bottom: 0.375rem;
   font-weight: bold;
   padding-bottom: 8rem;
   border-radius: 0.625rem;
-  color: black;
+  color: var(--dark);
   cursor: default;
 }
 
@@ -575,9 +604,9 @@ bottom: 0.375rem;
   width: calc(100% - 10px);
   top: 2rem;
   left: 0.3125rem;
-  border: 1px solid var(--grey);
+  border: 1px solid var(--shadow);
   border-radius: 10px;
-  box-shadow: 4px 4px 14px rgba(193, 193, 177, 0.5);
+  box-shadow: 4px 4px 14px var(--shadow);
 }
 
 .select-list li {
@@ -595,14 +624,14 @@ bottom: 0.375rem;
 
 .select-list li button:focus,
 .select-list li button:hover {
-  background-color: rgba(193, 193, 177, 0.5);
-  box-shadow: 4px 4px 14px rgba(193, 193, 177, 0.5);
+  background-color: var(--shadow);
+  box-shadow: 4px 4px 14px var(--shadow);
 }
 
 #timerPanel {
-  color: black;
+  color: var(--point3);
   font-weight: bold;
-  padding-top: 4rem;
+  padding-top: 5.8rem;
   font-size: 3.2rem;
 }
 
@@ -619,10 +648,11 @@ bottom: 0.375rem;
 /* // 7. todolist-sec */
 .todolist {
   grid-area: todolist;
-  background-color: black;
+  background-color: var(--dark);
   border: 2px solid white;
   position: relative;
   padding: 0 1rem 1rem 1rem;
+  color: white;
 }
 
 .todo-heading {
@@ -638,32 +668,49 @@ bottom: 0.375rem;
   width: 3.25rem;
   height: 3.25rem;
   border-radius: 50%;
-  background-color: #D9832E;
+  background-color: var(--point);
   font-size: 2rem;
   vertical-align: 0.3rem;
   left: 0.3rem;
 }
 
 #addBtn:hover {
-  background-color: #5A7B6B;
-  box-shadow: 0 10px 15px 0 rgba(148, 192, 245, 0.75);
-  transition: all 0.2s ease-in-out;
+  background-color: var(--point3);
+  box-shadow: 0 5px 15px 0 var(--main);
+  transition: all 0.2s all -out;
 }
 
 #addBtn:active {
-  background-color: #63ffb4;
-  transition: all 0.2s ease-in-out;
+  background-color: var(--point2);
+  transition: all 0.2s all -out;
 }
 
 #todoForm {
   margin-top: 3rem;
+  position: relative;
+}
+
+#todoInput {
+position: absolute;
+top: -1.6875rem;
+left: 12.6875rem;
+background: transparent;
+border-bottom: 2px solid white;
+font-size: 0.9rem;
+height: 1rem;
+padding: 1rem 0.7rem;
+color: white;
+}
+
+#todoInput:focus {
+  border-bottom: 2px solid var(--point3);
 }
 
 #todoList {
   display: flex;
   overflow-x: auto;
   gap: 0.5rem;
-  scrollbar-color: white var(--grey);
+  scrollbar-color: white var(--shadow);
   scrollbar-width: thin;
 }
 
@@ -672,7 +719,7 @@ bottom: 0.375rem;
 }
 
 #todoList::-webkit-scrollbar-track {
-  background-color: var(--grey);
+  background-color: var(--point2);
   border-radius: 100px;
 }
 
@@ -695,6 +742,7 @@ bottom: 0.375rem;
 
 .item-label {
   word-break: break-all;
+  font-size: 0.9rem;
 }
 
 .item-label::before {
@@ -719,7 +767,7 @@ bottom: 0.375rem;
   background: no-repeat center/cover url('../assets/delete-icon.svg');
   width: 1.3rem;
   height: 1.3rem;
-  margin-left: 0.1875rem;
+  margin-left: 0.3125rem;
   vertical-align: -0.1875rem;
 }
 
