@@ -28,7 +28,7 @@
   grid-template-areas:
     "profile"
     "gallery"
-    "schedule"
+    "painter"
     "todolist"
     "weather"
     "clock";
@@ -223,7 +223,7 @@
 
 /* // 4. paint-sec */
 .painter {
-  grid-area: schedule;
+  grid-area: painter;
   background-color: #fff;
 }
 
@@ -262,10 +262,10 @@ canvas {
 
 .btn-options button {
   padding: 0.625rem 1.875rem;
-  color:rgba(148, 192, 245);
+  color: rgba(148, 192, 245);
   background-color: black;
   transition: opacity linear .1s;
-} 
+}
 
 .btn-options button:hover {
   opacity: 0.85;
@@ -278,8 +278,8 @@ canvas {
 .color-option {
   width: 50px;
   cursor: pointer;
-  border:2px solid white;
-  transition:transform ease-in-out .1s;
+  border: 2px solid white;
+  transition: transform ease-in-out .1s;
 }
 
 .color-option:hover {
@@ -297,44 +297,47 @@ canvas {
   z-index: 1;
 }
 
-
-.calendar {
-  color: black;
-  border: 1px solid skyblue;
-}
-
+/* // 5. weather-sec */
 .weather {
   grid-area: weather;
   background-color: var(--sub);
 }
 
+/* // 6. clock-sec */
 .clock {
   grid-area: clock;
   background-color: var(--point);
-}
-
-
-
-/* 
-.heading-small {
-  color: white;
-  background-color: #16171C;
-  width: object-fit;
-  font-weight: bolder;
-  border-radius: 30px;
-  padding: 10px;
-} */
-
-/* clock-sec */
-#clock {
-  border-radius: 50%;
-  background-color: #fff;
-  width: 160px;
-  height: 160px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   position: relative;
 }
 
-#clock::after {
+.mini-heading {
+  display: inline-block;
+  background-color: #16171C;
+  color: white;
+  font-weight: bolder;
+  border-radius: 30px;
+  padding: 5px 10px;
+  margin-bottom: 0.5rem;
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+}
+
+.analog-clock {
+  border-radius: 50%;
+  background-color: #fff;
+  width: 10rem;
+  height: 10rem;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.analog-clock::after {
   content: '';
   width: 6px;
   height: 6px;
@@ -483,14 +486,31 @@ canvas {
   left: calc(50% - 6px / 2);
 }
 
-.left-btn,
-.right-btn {
+.clock-btn {
   position: absolute;
+  top: calc(50% - 1.5rem / 2);
+  background-color: transparent;
+  padding: 0;
+}
+
+.clock-btn.left {
+  left: 0;
+}
+
+.clock-btn.right {
+  right: 0;
+}
+
+.clock-btn img {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 #timer {
-  width: 160px;
-  height: 160px;
+  width: 10rem;
+  height: 10rem;
+  position: relative;
+  margin-top: 2rem;
 }
 
 .select-list {
@@ -634,8 +654,8 @@ canvas {
     grid-template: 1fr 1fr 1fr / 2fr 1fr 1fr;
     grid-template-areas:
       "gallery profile profile"
-      "schedule weather clock"
-      "schedule todolist todolist";
+      "painter weather clock"
+      "painter todolist todolist";
   }
 
   #flipBtn {
@@ -654,7 +674,7 @@ canvas {
 }
 
 @media (max-width: 444px) {
-  .schedule {
+  .painter {
     padding: 2rem 0.5rem;
   }
 }

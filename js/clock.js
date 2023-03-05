@@ -8,8 +8,8 @@ const timerList = document.querySelector('#timerList');
 const timerPanel = document.querySelector('#timerPanel');
 const timerMin = document.querySelector('.panel-item.min');
 const timerSec = document.querySelector('.panel-item.sec');
-const leftBtn = document.querySelector('.clock .left-btn');
-const rightBtn = document.querySelector('.clock .right-btn');
+const leftBtn = document.querySelector('.clock-btn.left');
+const rightBtn = document.querySelector('.clock-btn.right');
 
 function handleClock() {
   const date = new Date();
