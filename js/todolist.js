@@ -1,4 +1,5 @@
 // * TodoList
+const TODOS_KEY = 'todos';
 const todoForm = document.querySelector('#todoForm');
 const todoInput = document.querySelector('#todoInput');
 const todoList = document.querySelector('#todoList');
@@ -7,7 +8,44 @@ const addBtn = document.querySelector('#addBtn');
 let todos = [];
 let counter = 0;
 
-paintTodos();
+function saveTodos() {
+  localStorage.setItem(TODOS_KEY, JSON.stringify(todos));
+}
+
+function deleteToDo(e) {
+  const li = e.target.parentElement;
+  li.remove();
+  todos = todos.filter(i => i.id !== parseInt(li.id));
+  saveTodos();
+  counter--;
+  addBtn.textContent = counter;
+}
+
+function paintTodo(todo) {
+  const todoItem = document.createElement('li');
+  const delBtn = document.createElement('button');
+
+  todoItem.id = todo.id;
+  todoItem.innerHTML = `<input type="checkbox" id="todoItem${todo.id}" class="ir todo-item"><label for="todoItem${todo.id}" class="item-label">${todo.txt}</label>`;
+  delBtn.addEventListener('click', deleteToDo);
+  todoItem.appendChild(delBtn);
+  todoList.appendChild(todoItem);
+  counter++;
+  addBtn.textContent = counter;
+}
+
+function handleTodoSubmit(e) {
+  e.preventDefault();
+  const newTodo = {
+    id: Date.now(),
+    txt: todoInput.value,
+  }
+  todos.push(newTodo);
+  todoInput.value = '';
+  todoInput.classList.toggle('ir');
+  paintTodo(newTodo);
+  saveTodos();
+}
 
 addBtn.addEventListener('mouseover', () => {
   addBtn.textContent = '+';
@@ -18,37 +56,12 @@ addBtn.addEventListener('mouseout', () => {
 addBtn.addEventListener('click', () => {
   todoInput.classList.toggle('ir');
 })
+todoForm.addEventListener('submit', handleTodoSubmit);
+const savedTodos = localStorage.getItem(TODOS_KEY);
 
-todoForm.addEventListener('submit', updateTodo);
-
-function paintTodos() {
-  todos = [];
-  counter = 0;
-  todoList.innerHTML = '';
-  const TODOS_KEY = localStorage.getItem('todos');
-
-  if (TODOS_KEY) {
-    todos.push(...TODOS_KEY.split(','));
-  }
-  console.log(todos)
-  for (let i = 0; i < todos.length; i++) {
-    const todoItem = document.createElement('li');
-
-    todoItem.innerHTML =
-      `<input type="checkbox" id="todoItem${i}" class="ir todo-item"><label for="todoItem${i}" class="item-label">${todos[i]}</label>`;
-
-    todoList.appendChild(todoItem);
-    counter++;
-  }
-  addBtn.textContent = counter;
+if (savedTodos) {
+  const parsedTodos = JSON.parse(savedTodos);
+  todos = parsedTodos;
+  todos.forEach(paintTodo)
 }
 
-function updateTodo(e) {
-  e.preventDefault();
-  todos.push(todoInput.value);
-  localStorage.setItem('todos', todos);
-  todoInput.value = '';
-  todoInput.classList.toggle('ir');
-
-  paintTodos();
-}
