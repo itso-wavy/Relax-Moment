@@ -24,9 +24,6 @@ handleClock();
 setInterval(handleClock, 1000);
 
 // * timer
-timerSelect.addEventListener('click', () => {
-  timerList.classList.toggle('on');
-})
 timerList.addEventListener('click', (e) => {
   let selectedMin = parseInt(e.target.textContent) * 60;
   timerSelect.classList.toggle('ir');

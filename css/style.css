@@ -147,7 +147,6 @@
   height: 5rem;
   border-radius: 50%;
   background-color: #7A81F2;
-  /*TODO:*/
   position: relative;
   cursor: pointer;
   text-align: center;
@@ -304,6 +303,7 @@ canvas {
 }
 
 /* // 6. clock-sec */
+/* 6-1. clock */
 .clock {
   grid-area: clock;
   background-color: var(--point);
@@ -506,24 +506,60 @@ canvas {
   height: 1.5rem;
 }
 
-#timer {
+/* 6-2. timer */
+#timerSelect {
   width: 10rem;
   height: 10rem;
   position: relative;
   margin-top: 2rem;
+  border-radius: 10px;
+}
+
+.select-btn {
+  width: 100%;
+  height: 100%;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding-bottom: 8rem;
+  border-radius: 0.625rem;
+  color: black;
+  cursor: default;
 }
 
 .select-list {
-  display: none;
+  position: absolute;
+  width: calc(100% - 10px);
+  top: 2rem;
+  left: 0.3125rem;
+  border: 1px solid var(--grey);
+  border-radius: 10px;
+  box-shadow: 4px 4px 14px rgba(193, 193, 177, 0.5);
 }
 
-.select-list.on {
-  display: block;
+.select-list li {
+  padding: 0.3125rem 0.4375rem;
 }
 
-.panel-item {
+.select-list li button {
+  width: 100%;
+  padding: 0.4375rem 0.625rem;
+  font-size: 0.9rem;
+  line-height: 1rem;
+  border-radius: 0.5rem;
+  text-align: left;
+}
+
+.select-list li button:focus,
+.select-list li button:hover {
+  background-color: rgba(193, 193, 177, 0.5);
+  box-shadow: 4px 4px 14px rgba(193, 193, 177, 0.5);
+}
+
+#timerPanel {
   color: black;
-  font-size: 50px;
+  font-weight: bold;
+  padding-top: 4rem;
+  font-size: 3.2rem;
 }
 
 .timeout {
@@ -543,9 +579,6 @@ canvas {
   border: 2px solid white;
   position: relative;
   padding: 0 1rem 1rem 1rem;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between; */
 }
 
 .todo-heading {
@@ -568,14 +601,12 @@ canvas {
 }
 
 #addBtn:hover {
-  /*TODO:*/
   background-color: #5A7B6B;
   box-shadow: 0 10px 15px 0 rgba(148, 192, 245, 0.75);
   transition: all 0.2s ease-in-out;
 }
 
 #addBtn:active {
-  /*TODO:*/
   background-color: #63ffb4;
   transition: all 0.2s ease-in-out;
 }
