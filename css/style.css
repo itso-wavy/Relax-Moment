@@ -166,7 +166,7 @@ opacity: 0.85;
 }
 
 .img-label:hover {
-  background-color: var(--point);
+  background-color: var(--point3);
   box-shadow: inset 0px 0px 10px 1px var(--main);
 }
 
@@ -536,7 +536,7 @@ bottom: 0.375rem;
 }
 
 #secHand {
-  background-color: var(--point2);
+  background-color: var(--point3);
   width: 2px;
   height: 45%;
   top: calc(50% - 45%);
