@@ -1,5 +1,5 @@
 // * Login
-const USERNAME_KEY = localStorage.getItem('username');
+const USERNAME_KEY = 'username';
 const loginForm = document.querySelector('#loginForm');
 const loginInput = document.querySelector('#loginInput');
 const profileBox = document.querySelector('#profileBox');
@@ -15,9 +15,9 @@ function getUserInfo() {
   profileName.innerText = username.toLowerCase();
   loginInput.classList.toggle('ir');
   profileBox.classList.toggle('ir');
-  const USERNAME_VALUE = localStorage.getItem('PROFILE_IMG_KEY');
-  if(USERNAME_VALUE) {
-    profileImg.src = USERNAME_VALUE;
+  const readerValue = localStorage.getItem('profile_img');
+  if(readerValue) {
+    profileImg.src = readerValue;
     profileImg.classList.remove('ir');
   } else {
     initial.innerText = username[0].toLowerCase();
@@ -35,7 +35,7 @@ function handleLogout() {
   }
 }
 
-if (!USERNAME_KEY) {
+if (!localStorage.getItem(USERNAME_KEY)) {
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     let username = loginInput.value;
@@ -62,7 +62,7 @@ imgInput.addEventListener('change', function () {
       profileImg.src = reader.result;
       profileImg.classList.remove('ir');
       initial.classList.add('ir');
-      localStorage.setItem('PROFILE_IMG_KEY', reader.result);
+      localStorage.setItem('profile_img', reader.result);
     });
   }
 );

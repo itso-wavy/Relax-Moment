@@ -34,7 +34,7 @@
         class="sns-btn">
         <img src="assets/tistory-icon.svg" alt="go to wavy's blog" class="bar-icon">
       </a>
-    </section> <!-- // 1. topbar-sec-->
+    </section> <!-- // 1. topbar-sec -->
 
     <section class="login-sec">
       <form id="loginForm">
@@ -53,36 +53,45 @@
           </button>
         </div>
       </div>
-    </section> <!-- // 2. login-sec-->
+    </section> <!-- // 2. login-sec -->
   </header>
 
   <section class="grid-item gallery">
     <h2 class="ir">photos, quotes</h2>
     <p class="maker">WAVY made with ♥</p>
-      <q id="quotes"></q>
-      <button id="flipBtn">
-        <img src="assets/flip-icon.svg" alt="gallery flip button">
-      </button>
-  </section> <!-- // 3. gallery-sec-->
-
-  <section class="grid-item schedule">
-    <h2 class="ir">calendar, paint</h2>
-    <section id="calendar">
-      <h3><time>March</time></h3> 
-      <!-- FIXME: -->
-    </section>
-    
-    <section id="paint">
-      <h2>paint</h2>
-    </section>
-
-    <button class="left-btn">
-      <img src="assets/arrow-left-icon.svg" alt="to left">
+    <q id="quotes"></q>
+    <button id="flipBtn">
+      <img src="assets/flip-icon.svg" alt="gallery flip button">
     </button>
-    <button class="right-btn">
-      <img src="assets/arrow-right-icon.svg" alt="to right">
-    </button>
-  </section> <!-- // 4. schedule-sec-->
+  </section> <!-- // 3. gallery-sec -->
+
+  <section class="grid-item painter">
+    <h2 class="ir">paint</h2>
+    <div class="paint">
+      <div class="paint-container">
+        <canvas></canvas>
+        <div class="paint-menu">
+          <input id="lineWidth" type="range" min="1" max="20" value="10" step="1" />
+          <div class="btn-options">
+            <button id="destroyBtn">New Canvas</button>
+            <button id="eraserBtn">Erase</button>
+            <button id="modeBtn">Fill</button>
+          </div>
+          <div class="color-options">
+            <input id="lineColor" type="color">
+            <div class="color-option" style="background-color: #1abc9c;" data-color="#1abc9c"></div>
+            <div class="color-option" style="background-color: #3498db;" data-color="#3498db"></div>
+            <div class="color-option" style="background-color: #bdc3c7;" data-color="#bdc3c7"></div>
+            <div class="color-option" style="background-color: #f1c40f;" data-color="#f1c40f"></div>
+            <div class="color-option" style="background-color: #e74c3c;" data-color="#e74c3c"></div>
+            <div class="color-option" style="background-color: #8e44ad;" data-color="#8e44ad"></div>
+            <div class="color-option" style="background-color: #34495e;" data-color="#34495e"></div>
+          </div>
+        </div>
+      </div>
+      <div id="brush"></div>
+    </div>
+  </section> <!-- // 4. paint-sec -->
 
   <section class="grid-item weather">
     <p><span id="weatherCity" class="weather-item"></span></p>
@@ -92,7 +101,7 @@
     <p>Feels Like... <span id="weatherFeeltemp" class="weather-item"></span></p>
     <p>sunrise <span id="weatherSunrise" class="weather-item"></span></p>
     <p>sunset <span id="weatherSunset" class="weather-item"></span></p>
-  </section> <!-- // 5. weather-sec-->
+  </section> <!-- // 5. weather-sec -->
 
   <section class="grid-item clock">
     <h2 class="ir">analog clock, timer</h2>
@@ -159,29 +168,24 @@
     <button class="right-btn">
       <img src="assets/arrow-right-rounded-icon.svg" alt="to right">
     </button>
-  </section> <!-- // 6. clock-sec-->
+  </section> <!-- // 6. clock-sec -->
 
   <section class="grid-item todolist">
-      <h2 class="todo-txt">Things to do <button id="addBtn"></button></h2>
-      <form id="todoForm">
-        <ol id="goallist">
-          <!-- <li>API by day, IPA by night</li> -->
-        </ol>
-        <!-- <fieldset id="todolist">
-          <label for="todo1st">1.</label>
-          <input type="text" id="todo1st" class="todo-item"></input>
-          <label for="todo2nd">2.</label>
-          <input type="text" id="todo2nd" class="todo-item"></input>
-          <label for="todo3rd">3.</label>
-          <input type="text" id="todo3rd" class="todo-item"></input>
-        </fieldset> -->
-      </form>
-  </section> <!-- // 7. todolist-sec-->
+    <h2 class="todo-heading">Things to do <button id="addBtn">0</button></h2>
+    <form id="todoForm">
+      <input id="todoInput" type="text" class="ir">
+      <div class="box">
+        <ul id="todoList">
+        </ul>
+      </div>
+
+    </form>
+  </section> <!-- // 7. todolist-sec -->
 
   <script src="js/login.js"></script>
   <script src="js/topbar.js"></script>
   <script src="js/gallery.js"></script>
-  <script src="js/calendar.js"></script>
+  <script src="js/paint.js"></script>
   <script src="js/weather.js"></script>
   <script src="js/clock.js"></script>
   <script src="js/todolist.js"></script>

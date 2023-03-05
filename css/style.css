@@ -5,6 +5,13 @@
   font-style: normal;
 }
 
+:root {
+  --grey: #C1C1B1;
+  --main: #374FC7;
+  --sub: #b7c8d2;
+  --point: #f0ec35;
+}
+
 * {
   font-family: 'SUIT-Regular', normal !important;
 }
@@ -214,48 +221,99 @@
   margin-right: 1.5rem;
 }
 
-/* // 4. schedule-sec */
-.schedule {
+/* // 4. paint-sec */
+.painter {
   grid-area: schedule;
-  background-color: #5A7B6B;
   background-color: #fff;
+}
+
+.paint {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paint-container {
+  border-radius: 1.875rem;
+  background: no-repeat top/contain;
+  background-image: url('../assets/feeling.png');
+  width: 342px;
+}
+
+canvas {
+  border-radius: 1.875rem;
+  border: 1px dashed black;
+  cursor: none;
+}
+
+.paint-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.btn-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.625rem;
+}
+
+.btn-options button {
+  padding: 0.625rem 1.875rem;
+  color:rgba(148, 192, 245);
+  background-color: black;
+  transition: opacity linear .1s;
+} 
+
+.btn-options button:hover {
+  opacity: 0.85;
+}
+
+.color-options {
+  display: flex;
+}
+
+.color-option {
+  width: 50px;
+  cursor: pointer;
+  border:2px solid white;
+  transition:transform ease-in-out .1s;
+}
+
+.color-option:hover {
+  transform: scale(1.1);
+}
+
+#brush {
+  border: 1px solid var(--main);
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+
+.calendar {
+  color: black;
+  border: 1px solid skyblue;
 }
 
 .weather {
   grid-area: weather;
-  background-color: #7A81F2;
+  background-color: var(--sub);
 }
 
 .clock {
   grid-area: clock;
-  background-color: #F0EC35;
+  background-color: var(--point);
 }
 
-.todolist {
-  grid-area: todolist;
-  background-color: black;
-  border: 2px solid white;
-}
 
-@media (min-width: 650px) {
-  .container {
-    grid-template: 1fr 1fr 1fr / 2fr 1fr 1fr;
-    grid-template-areas:
-      "gallery profile profile"
-      "schedule weather clock"
-      "schedule todolist todolist";
-  }
-
-  #flipBtn {
-    padding-bottom: 2.7rem;
-  }
-}
-
-@media (min-width: 1055px) {
-  #loginInput::placeholder {
-    font-size: 2rem;
-  }
-}
 
 /* 
 .heading-small {
@@ -459,19 +517,34 @@
 }
 
 /* // 7. todolist-sec */
-.todo-txt {
+.todolist {
+  grid-area: todolist;
+  background-color: black;
+  border: 2px solid white;
+  position: relative;
+  padding: 0 1rem 1rem 1rem;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+}
+
+.todo-heading {
+  position: absolute;
   font-size: 1.5rem;
   font-style: italic;
+  top: 0.5rem;
+  font-weight: bold;
 }
 
 #addBtn {
+  position: relative;
   width: 3.25rem;
   height: 3.25rem;
   border-radius: 50%;
-  background-color: blue; 
-  font-weight: bold;
+  background-color: #D9832E;
   font-size: 2rem;
-  vertical-align: text-top;
+  vertical-align: 0.3rem;
+  left: 0.3rem;
 }
 
 #addBtn:hover {
@@ -487,21 +560,101 @@
   transition: all 0.2s ease-in-out;
 }
 
-.img-label {
-  display: block;
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-  background-color: #7A81F2;
-  /*TODO:*/
-  position: relative;
-  cursor: pointer;
-  text-align: center;
+#todoForm {
+  margin-top: 3rem;
 }
 
-#initial {
-  line-height: 5rem;
-  font-size: 2rem;
-  position: relative;
-  bottom: 0.15rem;
+#todoList {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  scrollbar-color: white var(--grey);
+  scrollbar-width: thin;
+}
+
+#todoList::-webkit-scrollbar {
+  height: 10px;
+}
+
+#todoList::-webkit-scrollbar-track {
+  background-color: var(--grey);
+  border-radius: 100px;
+}
+
+#todoList::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background-color: white;
+  min-width: 10rem;
+}
+
+#todoList li {
+  margin: 1.3rem 0;
+  padding: 1rem;
+  border: 2px solid white;
+  border-radius: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+  line-height: 1.5rem;
+}
+
+.item-label {
+  word-break: break-all;
+}
+
+.item-label::before {
+  display: inline-block;
+  content: '';
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.3125rem;
+  vertical-align: -0.4375rem;
+  background: no-repeat center/cover url('../assets/unchecked-icon.svg');
+}
+
+.todo-item:checked+.item-label::before {
+  background: no-repeat center/cover url('../assets/checked-icon.svg');
+}
+
+.todo-item:checked+.item-label {
+  text-decoration: line-through;
+}
+
+.item-label+button {
+  background: no-repeat center/cover url('../assets/delete-icon.svg');
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-left: 0.1875rem;
+  vertical-align: -0.1875rem;
+}
+
+/* media */
+@media (min-width: 650px) {
+  .container {
+    grid-template: 1fr 1fr 1fr / 2fr 1fr 1fr;
+    grid-template-areas:
+      "gallery profile profile"
+      "schedule weather clock"
+      "schedule todolist todolist";
+  }
+
+  #flipBtn {
+    padding-bottom: 2.7rem;
+  }
+
+  #todoList li {
+    width: 280px;
+  }
+}
+
+@media (min-width: 1055px) {
+  #loginInput::placeholder {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 444px) {
+  .schedule {
+    padding: 2rem 0.5rem;
+  }
 }
