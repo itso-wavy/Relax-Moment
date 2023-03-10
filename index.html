@@ -71,6 +71,7 @@
       <div class="paint-container">
         <canvas></canvas>
         <div class="paint-menu">
+          <label for="lineWidth" class="ir">line width</label>
           <input id="lineWidth" type="range" min="1" max="20" value="10" step="1" />
           <div class="btn-options">
             <button id="destroyBtn">New Canvas</button>
@@ -78,6 +79,7 @@
             <button id="modeBtn">Fill</button>
           </div>
           <div class="color-options">
+            <label for="lineColor" class="ir">line color</label>
             <input id="lineColor" type="color">
             <div class="color-option" style="background-color: #1abc9c;" data-color="#1abc9c"></div>
             <div class="color-option" style="background-color: #3498db;" data-color="#3498db"></div>
@@ -168,7 +170,7 @@
         <span class="panel-item min">00</span>
         <span class="panel-item">:</span>
         <span class="panel-item sec">00</span>
-        </p>
+      </p>
     </article>
 
     <button class="clock-btn left">
@@ -182,6 +184,7 @@
   <section class="grid-item todolist">
     <h2 class="todo-heading">Things to do <button id="addBtn">0</button></h2>
     <form id="todoForm">
+      <label for="todoInput" class="ir">todo input</label>
       <input id="todoInput" type="text" class="ir" maxlength="15">
       <div class="box">
         <ul id="todoList">
